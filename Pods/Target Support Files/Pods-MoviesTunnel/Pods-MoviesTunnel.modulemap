@@ -1,0 +1,6 @@
+framework module Pods_MoviesTunnel {
+  umbrella header "Pods-MoviesTunnel-umbrella.h"
+
+  export *
+  module * { export * }
+}
