@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct HighlightFilms {
-  var popular: [Film]
-  var latest: [Film]
-  var upcoming: [Film]
-  var topRated: [Film]
+struct HighlightMovies {
+  var popular: [Movie]
+  var latest: [Movie]
+  var upcoming: [Movie]
+  var topRated: [Movie]
   
   init() {
     self.popular = []

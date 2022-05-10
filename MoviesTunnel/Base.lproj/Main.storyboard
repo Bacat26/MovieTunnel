@@ -1,24 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Highlights View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HighlightsViewController" customModule="MoviesTunnel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Tunnel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yx2-T3-aKs">
+                                <rect key="frame" x="12" y="56" width="390" height="32.5"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="25"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="TU0-BV-voP">
+                                <rect key="frame" x="0.0" y="88.5" width="414" height="773.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" name="Background"/>
+                        <constraints>
+                            <constraint firstItem="TU0-BV-voP" firstAttribute="top" secondItem="yx2-T3-aKs" secondAttribute="bottom" id="20d-RF-4nv"/>
+                            <constraint firstItem="yx2-T3-aKs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="12" id="67U-QA-O2M"/>
+                            <constraint firstItem="TU0-BV-voP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7Qm-Ho-ksv"/>
+                            <constraint firstItem="yx2-T3-aKs" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="12" id="7ef-kO-2SJ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yx2-T3-aKs" secondAttribute="trailing" constant="12" id="BV0-UV-Llv"/>
+                            <constraint firstItem="yx2-T3-aKs" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UBd-e1-nbP"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="TU0-BV-voP" secondAttribute="bottom" id="ltx-m5-WhK"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TU0-BV-voP" secondAttribute="trailing" id="y11-Wh-VZL"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="TU0-BV-voP" id="Ul5-wc-4Ou"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="20" y="46"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="wyM-co-8Gl">
+            <objects>
+                <viewController id="CdF-bm-Qlm" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="s3V-FC-2O2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Tunnel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AVH-66-qgt">
+                                <rect key="frame" x="0.0" y="56" width="414" height="32.5"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="25"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="DZE-e0-WfI">
+                                <rect key="frame" x="0.0" y="88.5" width="414" height="807.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="qjI-cQ-edL"/>
+                        <color key="backgroundColor" name="Background"/>
+                        <constraints>
+                            <constraint firstItem="DZE-e0-WfI" firstAttribute="top" secondItem="AVH-66-qgt" secondAttribute="bottom" id="7BY-Jv-1Tz"/>
+                            <constraint firstItem="AVH-66-qgt" firstAttribute="top" secondItem="qjI-cQ-edL" secondAttribute="top" constant="12" id="MRP-Fp-SlV"/>
+                            <constraint firstItem="AVH-66-qgt" firstAttribute="leading" secondItem="qjI-cQ-edL" secondAttribute="leading" id="WiT-o6-Yg8"/>
+                            <constraint firstItem="qjI-cQ-edL" firstAttribute="trailing" secondItem="DZE-e0-WfI" secondAttribute="trailing" id="iRO-oh-Uoh"/>
+                            <constraint firstItem="DZE-e0-WfI" firstAttribute="leading" secondItem="qjI-cQ-edL" secondAttribute="leading" id="uRx-MU-mtY"/>
+                            <constraint firstAttribute="trailing" secondItem="AVH-66-qgt" secondAttribute="trailing" id="wnC-db-iKX"/>
+                            <constraint firstAttribute="bottom" secondItem="DZE-e0-WfI" secondAttribute="bottom" id="ye1-gE-oIb"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rAB-ZV-NZg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="800.00000000000011" y="45.535714285714285"/>
         </scene>
     </scenes>
+    <resources>
+        <namedColor name="Background">
+            <color red="0.11800000071525574" green="0.11800000071525574" blue="0.11800000071525574" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

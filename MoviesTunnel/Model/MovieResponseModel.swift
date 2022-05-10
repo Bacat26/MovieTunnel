@@ -1,5 +1,5 @@
 //
-//  FilmResponseModel.swift
+//  MovieResponseModel.swift
 //  MoviesTunnel
 //
 //  Created by bilal acat on 10.05.2022.
@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct FilmResponseModel: Codable {
+struct MovieResponseModel: Codable {
   let page: Int
-  let results: [Film]
+  let results: [Movie]
   let totalPages, totalResults: Int
   
   enum CodingKeys: String, CodingKey {
@@ -20,7 +20,7 @@ struct FilmResponseModel: Codable {
 }
 
 // MARK: - Result
-struct Film: Codable {
+struct Movie: Codable {
   let adult: Bool?
   let backdropPath: String?
   let genreIDS: [Int]?
@@ -35,6 +35,10 @@ struct Film: Codable {
   let posterPath: String?
   lazy var posterURL: URL? = {
       return URL(string: "https://image.tmdb.org/t/p/w500" + (posterPath ?? ""))
+  }()
+  
+  lazy var backdropURL: URL? = {
+      return URL(string: "https://image.tmdb.org/t/p/w500" + (backdropPath ?? ""))
   }()
   
   enum CodingKeys: String, CodingKey {

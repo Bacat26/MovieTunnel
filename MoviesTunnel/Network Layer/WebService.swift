@@ -8,24 +8,24 @@
 import Alamofire
 
 protocol WebServiceProtocol {
-  func getPopularFilms(pageIndex: Int, completion: @escaping (Result<FilmResponseModel, AFError>) -> Void)
-  func getLatestFilms(pageIndex: Int, completion: @escaping (Result<FilmResponseModel, AFError>) -> Void)
-  func getUpcomingFilms(pageIndex: Int, completion: @escaping (Result<FilmResponseModel, AFError>) -> Void)
-  func getTopRatedFilms(pageIndex: Int, completion: @escaping (Result<FilmResponseModel, AFError>) -> Void)
+  func getPopularMovies(pageIndex: Int, completion: @escaping (Result<MovieResponseModel, AFError>) -> Void)
+  func getLatestMovies(pageIndex: Int, completion: @escaping (Result<MovieResponseModel, AFError>) -> Void)
+  func getUpcomingMovies(pageIndex: Int, completion: @escaping (Result<MovieResponseModel, AFError>) -> Void)
+  func getTopRatedMovies(pageIndex: Int, completion: @escaping (Result<MovieResponseModel, AFError>) -> Void)
   func getMovieDetail(with movieID: Int, completion: @escaping (Result<MovieDetailResponse, AFError>) -> Void)
 }
 
 class WebService: WebServiceProtocol {
-  func getPopularFilms(pageIndex: Int, completion: @escaping (Result<FilmResponseModel, AFError>) -> Void) {
+  func getPopularMovies(pageIndex: Int, completion: @escaping (Result<MovieResponseModel, AFError>) -> Void) {
     request(method: .popular(pageIndex: pageIndex), completion: completion)
   }
-  func getLatestFilms(pageIndex: Int, completion: @escaping (Result<FilmResponseModel, AFError>) -> Void) {
+  func getLatestMovies(pageIndex: Int, completion: @escaping (Result<MovieResponseModel, AFError>) -> Void) {
     request(method: .latest(pageIndex: pageIndex), completion: completion)
   }
-  func getUpcomingFilms(pageIndex: Int, completion: @escaping (Result<FilmResponseModel, AFError>) -> Void) {
+  func getUpcomingMovies(pageIndex: Int, completion: @escaping (Result<MovieResponseModel, AFError>) -> Void) {
     request(method: .upcoming(pageIndex: pageIndex), completion: completion)
   }
-  func getTopRatedFilms(pageIndex: Int, completion: @escaping (Result<FilmResponseModel, AFError>) -> Void) {
+  func getTopRatedMovies(pageIndex: Int, completion: @escaping (Result<MovieResponseModel, AFError>) -> Void) {
     request(method: .topRated(pageIndex: pageIndex), completion: completion)
   }
   func getMovieDetail(with movieID: Int, completion: @escaping (Result<MovieDetailResponse, AFError>) -> Void) {
