@@ -6,10 +6,6 @@
 //
 
 import UIKit
-protocol HorizantalListCellDelegate: NSObject {
-  func showAllList(movieViewModelList: [SingleMovieCellViewModelable], listType: HighligtsMoviesType)
-  func showMovieDetail(movie: Movie)
-}
 
 class HorizantalListTVC: UITableViewCell {
   
