@@ -9,16 +9,13 @@ import Foundation
 
 enum HighligtsMoviesType: Int {
   case popular = 0
-  case latest = 1
-  case topRated = 2
-  case upcoming = 3
+  case topRated = 1
+  case upcoming = 2
   
   var title: String {
     switch self {
     case .popular:
       return "Popular"
-    case .latest:
-      return "Latest"
     case .topRated:
       return "Top Rated"
     case .upcoming:
@@ -54,7 +51,8 @@ class HighlightsViewModel: HighlightsViewModelable {
       guard let self = self else { return }
       switch response {
       case .success(let result):
-        self.highlightListCellViewModels.append(HorizantalListCellViewModel(movieList: result.results, listType: .popular))
+        let horizantalListCellViewModel = HorizantalListCellViewModel(movieList: result.results, listType: .popular)
+        self.highlightListCellViewModels.append(horizantalListCellViewModel)
       case .failure(let error):
         print("Error: ", error.errorDescription ?? "")
       }

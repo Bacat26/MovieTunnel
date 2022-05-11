@@ -9,13 +9,11 @@ import Foundation
 
 struct HighlightMovies {
   var popular: [Movie]
-  var latest: [Movie]
   var upcoming: [Movie]
   var topRated: [Movie]
   
   init() {
     self.popular = []
-    self.latest = []
     self.upcoming = []
     self.topRated = []
   }

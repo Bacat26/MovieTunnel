@@ -12,6 +12,8 @@
 		0F3D3365282B0784006EC494 /* HorizantalListCellViewModelable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3D3364282B0784006EC494 /* HorizantalListCellViewModelable.swift */; };
 		0F3D3367282B07A7006EC494 /* BaseTableViewCellViewModelable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3D3366282B07A7006EC494 /* BaseTableViewCellViewModelable.swift */; };
 		0F3D336A282B174A006EC494 /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3D3369282B174A006EC494 /* MovieListViewController.swift */; };
+		0F3D336C282B1C5E006EC494 /* SingleMovieCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3D336B282B1C5E006EC494 /* SingleMovieCellViewModel.swift */; };
+		0F3D336E282B2A14006EC494 /* PageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3D336D282B2A14006EC494 /* PageInfo.swift */; };
 		0F5CBD0F2829CC4600EBCD4D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5CBD0E2829CC4600EBCD4D /* AppDelegate.swift */; };
 		0F5CBD112829CC4600EBCD4D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5CBD102829CC4600EBCD4D /* SceneDelegate.swift */; };
 		0F5CBD162829CC4600EBCD4D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F5CBD142829CC4600EBCD4D /* Main.storyboard */; };
@@ -63,6 +65,8 @@
 		0F3D3364282B0784006EC494 /* HorizantalListCellViewModelable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizantalListCellViewModelable.swift; sourceTree = "<group>"; };
 		0F3D3366282B07A7006EC494 /* BaseTableViewCellViewModelable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCellViewModelable.swift; sourceTree = "<group>"; };
 		0F3D3369282B174A006EC494 /* MovieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
+		0F3D336B282B1C5E006EC494 /* SingleMovieCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleMovieCellViewModel.swift; sourceTree = "<group>"; };
+		0F3D336D282B2A14006EC494 /* PageInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageInfo.swift; sourceTree = "<group>"; };
 		0F5CBD0B2829CC4600EBCD4D /* MoviesTunnel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoviesTunnel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F5CBD0E2829CC4600EBCD4D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0F5CBD102829CC4600EBCD4D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -191,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				0F8CDA732829F4F300B390DE /* HorizantalListCellViewModel.swift */,
+				0F3D336B282B1C5E006EC494 /* SingleMovieCellViewModel.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -285,6 +290,7 @@
 				0F5CBD432829D25900EBCD4D /* Constants.swift */,
 				0F8CDA612829E97D00B390DE /* UIColor + Extension.swift */,
 				0F3D3356282AF09C006EC494 /* UIView + Extension.swift */,
+				0F3D336D282B2A14006EC494 /* PageInfo.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -597,12 +603,14 @@
 				0F5CBD462829D35400EBCD4D /* APIMethods.swift in Sources */,
 				0F3D3357282AF09C006EC494 /* UIView + Extension.swift in Sources */,
 				0F5CBD4C2829D4D100EBCD4D /* HighlightMovies.swift in Sources */,
+				0F3D336C282B1C5E006EC494 /* SingleMovieCellViewModel.swift in Sources */,
 				0F8CDA742829F4F300B390DE /* HorizantalListCellViewModel.swift in Sources */,
 				0F5CBD4D2829D4D100EBCD4D /* MovieDetailResponseModel.swift in Sources */,
 				0F3D3365282B0784006EC494 /* HorizantalListCellViewModelable.swift in Sources */,
 				0F5CBD0F2829CC4600EBCD4D /* AppDelegate.swift in Sources */,
 				0F3D336A282B174A006EC494 /* MovieListViewController.swift in Sources */,
 				0F5CBD112829CC4600EBCD4D /* SceneDelegate.swift in Sources */,
+				0F3D336E282B2A14006EC494 /* PageInfo.swift in Sources */,
 				0F5CBD442829D25900EBCD4D /* Constants.swift in Sources */,
 				0F8CDA722829F4BA00B390DE /* HighlightsViewModel.swift in Sources */,
 				0F8CDA622829E97D00B390DE /* UIColor + Extension.swift in Sources */,

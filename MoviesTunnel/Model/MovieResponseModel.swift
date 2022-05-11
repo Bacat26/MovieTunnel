@@ -33,13 +33,16 @@ struct Movie: Codable {
   let voteAverage: Double?
   let voteCount: Int?
   let posterPath: String?
-  lazy var posterURL: URL? = {
+  var posterURL: URL? {
+    get {
       return URL(string: "https://image.tmdb.org/t/p/w500" + (posterPath ?? ""))
-  }()
-  
-  lazy var backdropURL: URL? = {
+    }
+  }
+  var backdropURL: URL? {
+    get {
       return URL(string: "https://image.tmdb.org/t/p/w500" + (backdropPath ?? ""))
-  }()
+    }
+  }
   
   enum CodingKeys: String, CodingKey {
     case adult

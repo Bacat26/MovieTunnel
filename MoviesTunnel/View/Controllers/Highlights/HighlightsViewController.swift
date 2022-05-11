@@ -39,6 +39,16 @@ class HighlightsViewController: UIViewController {
     tableView.delegate = self
     tableView.dataSource = self
   }
+  
+  func showAll() -> (([SingleMovieCellViewModelable]?, HighligtsMoviesType) -> ()) {
+    return { [weak self] viewModelList, type in
+      guard let viewModelList = viewModelList, let self = self else { return }
+      let listViewModel = MovieListViewModel(initial: viewModelList, listType: type)
+      let movieListViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MovieListViewController") as! MovieListViewController
+      movieListViewController.viewModel = listViewModel as? MovieListViewModelable
+      self.present(movieListViewController, animated: true, completion: nil)
+    }
+  }
 }
 
 extension HighlightsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -49,8 +59,24 @@ extension HighlightsViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     if let cell = tableView.dequeueReusableCell(withIdentifier: "HorizantalListTVC", for: indexPath) as? HorizantalListTVC {
       cell.configureCell(viewModel: self.viewModel.highlightListCellViewModels[indexPath.row])
+      cell.delegate = self
       return cell
     }
     return UITableViewCell()
   }
+}
+
+extension HighlightsViewController: HorizantalListCellDelegate {
+  func showAllList(movieViewModelList: [SingleMovieCellViewModelable], listType: HighligtsMoviesType) {
+    let listViewModel = MovieListViewModel(initial: movieViewModelList, listType: listType)
+    let movieListViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MovieListViewController") as! MovieListViewController
+    movieListViewController.viewModel = listViewModel as? MovieListViewModelable
+    self.present(movieListViewController, animated: true, completion: nil)
+  }
+  
+  func showMovieDetail(movie: Movie) {
+    
+  }
+  
+  
 }

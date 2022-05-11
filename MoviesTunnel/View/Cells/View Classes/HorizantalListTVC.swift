@@ -6,12 +6,17 @@
 //
 
 import UIKit
+protocol HorizantalListCellDelegate: NSObject {
+  func showAllList(movieViewModelList: [SingleMovieCellViewModelable], listType: HighligtsMoviesType)
+  func showMovieDetail(movie: Movie)
+}
 
 class HorizantalListTVC: UITableViewCell {
   
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var collectionView: UICollectionView!
   var viewModel: HorizantalListCellViewModelable?
+  weak var delegate: HorizantalListCellDelegate?
   
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -41,19 +46,19 @@ class HorizantalListTVC: UITableViewCell {
   }
   
   @IBAction func showAllButtonAction(_ sender: Any) {
-    
+    delegate?.showAllList(movieViewModelList: self.viewModel?.movieViewModelList ?? [], listType: self.viewModel?.listType ?? .popular)
   }
 }
 
 extension HorizantalListTVC: UICollectionViewDelegate, UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return viewModel?.movieList.count ?? 0
+    return viewModel?.numberOfColoumn() ?? 0
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SingleMovieCVC", for: indexPath) as? SingleMovieCVC {
-      if let movieModel = self.viewModel?.movieList[indexPath.item] {
-        cell.configureCell(movie: movieModel)
+      if let movieModel = self.viewModel?.getCellViewModel(indexPath: indexPath) {
+        cell.configureCell(with: movieModel)
         return cell
       }
     }
@@ -61,10 +66,10 @@ extension HorizantalListTVC: UICollectionViewDelegate, UICollectionViewDataSourc
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    if let selectedMovie = self.viewModel?.movieList[indexPath.item] {
+//    if let selectedMovie = self.viewModel?.movieList[indexPath.item] {
 //      let detailVC = MovieDetailVC()
 //      detailVC.movieID = selectedMovie.id
-    }
+//    }
 //    (self.tabBarController as? MainTabBarController)?.present(with: detailVC)
 //    self.navigationController?.pushViewController(detailVC, animated: true)
   }

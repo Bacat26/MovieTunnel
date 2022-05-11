@@ -17,8 +17,7 @@ class SingleMovieCVC: UICollectionViewCell {
     
   }
   
-  func configureCell(movie: Movie) {
-    var movie = movie
-    self.imageView.kf.setImage(with: movie.posterURL, placeholder: UIImage(named: "listPlaceholder")!)
+  func configureCell(with viewModel: SingleMovieCellViewModelable) {
+    self.imageView.kf.setImage(with: viewModel.posterURL, placeholder: UIImage(named: "listPlaceholder")!)
   }
 }

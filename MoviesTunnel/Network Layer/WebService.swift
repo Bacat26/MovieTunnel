@@ -31,6 +31,10 @@ class WebService: WebServiceProtocol {
   func getMovieDetail(with movieID: Int, completion: @escaping (Result<MovieDetailResponse, AFError>) -> Void) {
     request(method: .movieDetail(movieID: movieID), completion: completion)
   }
+  func getMoviesList(for type: APIMethods, pageIndex: Int, completion: @escaping (Result<MovieResponseModel, AFError>) -> Void) {
+    request(method: .topRated(pageIndex: pageIndex), completion: completion)
+  }
+  
 }
 
 //MARK: General Usage
