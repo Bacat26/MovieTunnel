@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import Default
 
-struct MovieDetailResponse: Codable {
+struct MovieDetailResponse: Codable, DefaultStorable {
   let adult: Bool?
   let backdropPath: String?
   let budget: Int?

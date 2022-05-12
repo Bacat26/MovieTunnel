@@ -38,7 +38,7 @@ class HorizantalListTVC: UITableViewCell {
       fatalError("Can not convert viewModel to HorizantalListCellViewModel")
     }
     self.viewModel = viewModel
-    let needShowAllButton = viewModel.listType != .recommendations && viewModel.listType != .similar
+    let needShowAllButton = viewModel.listType.showAllEnable
     self.showAllButton.isHidden = !needShowAllButton
     self.setLayout()
     self.titleLabel.text = viewModel.listType.title

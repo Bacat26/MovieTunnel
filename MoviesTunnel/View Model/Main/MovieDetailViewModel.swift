@@ -26,10 +26,13 @@ class MovieDetailViewModel {
   var posterUrl: URL?
   var updateByDetailResponse: (() -> ())?
   var detailCellViewModels: [BaseTableViewCellViewModelable]! = []
+  var movie: Movie
+  var videos: [Video] = []
   
   private var client: WebServiceProtocol = WebService()
   
   init(movie: Movie) {
+    self.movie = movie
     self.movieName = movie.title ?? "Unknown Name"
     self.review = "\(movie.voteAverage ?? 0.0) (\(movie.voteCount ?? 0) Reviews)"
     self.releaseDate = movie.releaseDate ?? "Unknown Release Date"
@@ -38,7 +41,9 @@ class MovieDetailViewModel {
     self.movieId = movie.id
     self.backdropUrl = movie.backdropURL
     self.posterUrl = movie.posterURL
+    self.isFavorite = FavoriteStorageManager.shared.isFavoriteMovie(movieId: self.movieId)
     addOverviewCellViewModel()
+    getMovieVideos()
   }
   
   func addOverviewCellViewModel() {
@@ -86,6 +91,22 @@ class MovieDetailViewModel {
     guard !movieList.isEmpty else { return }
     let cellViewModel = HorizantalListCellViewModel(movieList: movieList, listType: listType)
     self.detailCellViewModels.append(cellViewModel)
+  }
+  
+  func getMovieVideos() {
+    client.getMovieVideos(with: movieId) { response in
+      switch response {
+      case .success(let result):
+        self.videos = result.results
+      case .failure(let error):
+        print("Error: ", error.errorDescription ?? "Unknown description")
+      }
+    }
+  }
+  
+  func getTrailerVideoId() -> String? {
+    guard self.videos.contains(where: { $0.site == "YouTube" }) else { return nil }
+    return self.videos.first(where: { $0.site == "YouTube" })?.key
   }
   
   func parseMovieDetail(response: MovieDetailResponse) {

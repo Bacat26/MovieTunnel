@@ -11,8 +11,9 @@ enum HorizantalListType: Int {
   case popular = 0
   case topRated = 1
   case upcoming = 2
-  case similar = 3
-  case recommendations = 4
+  case favorites = 3
+  case similar = 4
+  case recommendations = 5
   
   var title: String {
     switch self {
@@ -26,6 +27,25 @@ enum HorizantalListType: Int {
       return "Similar Movies"
     case .recommendations:
       return "Recommendations"
+    case .favorites:
+      return "My Favorites"
+    }
+  }
+  
+  var showAllEnable: Bool {
+    switch self {
+    case .popular:
+      return true
+    case .topRated:
+      return true
+    case .upcoming:
+      return true
+    case .similar:
+      return false
+    case .recommendations:
+      return false
+    case .favorites:
+      return false
     }
   }
 }
@@ -88,7 +108,17 @@ class HighlightsViewModel: HighlightsViewModelable {
       case .failure(let error):
         print("Error: ", error.errorDescription ?? "")
       }
-      self.reloadAll?()
+      self.getFavoriteList()
     }
+  }
+  
+  func getFavoriteList() {
+    guard let favoriteMovieList = FavoriteStorageManager.shared.getFavoriteList(), !favoriteMovieList.isEmpty else {
+      self.reloadAll?()
+      return
+    }
+    self.highlightListCellViewModels.removeAll(where: {$0.listType == .favorites})
+    self.highlightListCellViewModels.append(HorizantalListCellViewModel(movieList: favoriteMovieList, listType: .favorites))
+    self.reloadAll?()
   }
 }

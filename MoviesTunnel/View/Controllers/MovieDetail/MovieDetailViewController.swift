@@ -8,6 +8,10 @@
 import UIKit
 import Kingfisher
 
+protocol MovieDetailDelegate: NSObject {
+  func checkFavoriteListChanged()
+}
+
 class MovieDetailViewController: UIViewController {
   @IBOutlet weak var movieNameLabel: UILabel!
   @IBOutlet weak var genresLabel: UILabel!
@@ -24,6 +28,7 @@ class MovieDetailViewController: UIViewController {
   @IBOutlet weak var tableView: UITableView!
   
   var viewModel: MovieDetailViewModel!
+  weak var delegate: MovieDetailDelegate?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -31,6 +36,10 @@ class MovieDetailViewController: UIViewController {
     viewModel.getMovieDetail()
     viewModel.updateByDetailResponse = self.updateByDetailResponse()
     setupTableView()
+  }
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    delegate?.checkFavoriteListChanged()
   }
   
   func setupTableView() {
@@ -46,6 +55,11 @@ class MovieDetailViewController: UIViewController {
     releaseDateLabel.text = viewModel.releaseDate
     posterImageView.kf.setImage(with: viewModel.posterUrl, placeholder: UIImage(named: "placeholder")!)
     backdropImageView.kf.setImage(with: viewModel.backdropUrl, placeholder: UIImage(named: "placeholder")!)
+    setupFavoriteButton()
+  }
+  
+  func setupFavoriteButton() {
+    self.favoriteButtonImageView.tintImageColor(color: (self.viewModel.isFavorite ?? false) ? UIColor.systemOrange : UIColor("#BFBFBF"))
   }
   
   func updateByDetailResponse() -> (() -> ())? {
@@ -58,15 +72,29 @@ class MovieDetailViewController: UIViewController {
   }
   
   @IBAction func favoriteButtonAction(_ sender: Any) {
-    
+    if (viewModel.isFavorite ?? false) {
+      FavoriteStorageManager.shared.removeFavoriteMovie(movieID: viewModel.movie.id)
+    } else {
+      FavoriteStorageManager.shared.addItemFavoriteList(movie: viewModel.movie)
+    }
+    viewModel.isFavorite?.toggle()
+    setupFavoriteButton()
   }
   
   @IBAction func shareButtonAction(_ sender: Any) {
-    
+    let shareVC = UIActivityViewController(activityItems: [self.viewModel.movieName, self.viewModel.posterUrl ?? ""], applicationActivities: nil)
+    self.present(shareVC, animated: true, completion: nil)
   }
   
   @IBAction func watchButtonAction(_ sender: Any) {
-    
+    guard let youtubeId = self.viewModel.getTrailerVideoId() else { return }
+    var youtubeUrl = URL(string:"youtube://\(youtubeId)")!
+    if UIApplication.shared.canOpenURL(youtubeUrl){
+      UIApplication.shared.open(youtubeUrl)
+    } else{
+      youtubeUrl = URL(string:"https://www.youtube.com/watch?v=\(youtubeId)")!
+      UIApplication.shared.open(youtubeUrl)
+    }
   }
   
 }
@@ -109,6 +137,4 @@ extension MovieDetailViewController: HorizantalListCellDelegate {
     detailVC.viewModel = detailviewModel
     self.present(detailVC, animated: true, completion: nil)
   }
-  
-  
 }

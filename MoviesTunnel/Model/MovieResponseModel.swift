@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Default
 
 struct MovieResponseModel: Codable {
   let page: Int
@@ -20,7 +21,7 @@ struct MovieResponseModel: Codable {
 }
 
 // MARK: - Result
-struct Movie: Codable {
+struct Movie: Codable, DefaultStorable {
   let adult: Bool?
   let backdropPath: String?
   let genreIDS: [Int]?

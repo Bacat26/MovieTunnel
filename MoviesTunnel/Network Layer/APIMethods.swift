@@ -15,6 +15,7 @@ enum APIMethods: URLRequestConvertible {
   case movieDetail(movieID: Int)
   case similarMovies(movieID: Int)
   case recommendationsMovies(movieID: Int)
+  case videos(movieID: Int)
   
   var path: String {
     switch self {
@@ -32,6 +33,8 @@ enum APIMethods: URLRequestConvertible {
       return "\(movieID)/similar"
     case let .recommendationsMovies(movieID):
       return "\(movieID)/recommendations"
+    case let .videos(movieID):
+      return "\(movieID)/videos"
     }
   }
   
@@ -54,14 +57,14 @@ enum APIMethods: URLRequestConvertible {
   
   var methodType: HTTPMethod {
     switch self {
-    case .popular, .latest, .upcoming, .topRated, .movieDetail, .similarMovies, .recommendationsMovies:
+    case .popular, .latest, .upcoming, .topRated, .movieDetail, .similarMovies, .recommendationsMovies, .videos:
       return .get
     }
   }
   
   var encoding: ParameterEncoding {
     switch self {
-    case .popular, .latest, .upcoming, .topRated, .movieDetail, .similarMovies, .recommendationsMovies:
+    case .popular, .latest, .upcoming, .topRated, .movieDetail, .similarMovies, .recommendationsMovies, .videos:
       return URLEncoding.queryString
     }
   }

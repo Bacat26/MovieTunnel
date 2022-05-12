@@ -9,6 +9,7 @@ import Foundation
 
 protocol HighlightsViewModelable {
   func getList()
+  func getFavoriteList()
   func numberOfRowsTableView() -> Int
   func getCellViewModel(indexPath: IndexPath) -> HorizantalListCellViewModelable
   

@@ -9,6 +9,7 @@ target 'MoviesTunnel' do
 
   pod 'Alamofire', '~> 5.0'
   pod 'Kingfisher', '~> 7.0'
+  pod 'Default'
 
   target 'MoviesTunnelTests' do
     inherit! :search_paths

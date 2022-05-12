@@ -66,7 +66,7 @@ extension HighlightsViewController: UITableViewDelegate, UITableViewDataSource {
   }
 }
 
-extension HighlightsViewController: HorizantalListCellDelegate {
+extension HighlightsViewController: HorizantalListCellDelegate, MovieDetailDelegate {
   func showAllList(movieViewModelList: [SingleMovieCellViewModelable], listType: HorizantalListType) {
     let listViewModel = MovieListViewModel(initial: movieViewModelList, listType: listType)
     let movieListViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MovieListViewController") as! MovieListViewController
@@ -78,6 +78,11 @@ extension HighlightsViewController: HorizantalListCellDelegate {
     let detailVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MovieDetailViewController") as! MovieDetailViewController
     let detailviewModel = MovieDetailViewModel(movie: movie)
     detailVC.viewModel = detailviewModel
+    detailVC.delegate = self
     self.present(detailVC, animated: true, completion: nil)
+  }
+  
+  func checkFavoriteListChanged() {
+    self.viewModel.getFavoriteList()
   }
 }

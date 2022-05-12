@@ -15,6 +15,7 @@ protocol WebServiceProtocol {
   func getMovieDetail(with movieID: Int, completion: @escaping (Result<MovieDetailResponse, AFError>) -> Void)
   func getSimilarMovies(with movieID: Int, completion: @escaping (Result<MovieResponseModel, AFError>) -> Void)
   func getRecommendationsMovies(with movieID: Int, completion: @escaping (Result<MovieResponseModel, AFError>) -> Void)
+  func getMovieVideos(with movieID: Int, completion: @escaping (Result<MovieVideosResponse, AFError>) -> Void)
 }
 
 class WebService: WebServiceProtocol {
@@ -41,6 +42,9 @@ class WebService: WebServiceProtocol {
   }
   func getRecommendationsMovies(with movieID: Int, completion: @escaping (Result<MovieResponseModel, AFError>) -> Void) {
     request(method: .recommendationsMovies(movieID: movieID), completion: completion)
+  }
+  func getMovieVideos(with movieID: Int, completion: @escaping (Result<MovieVideosResponse, AFError>) -> Void) {
+    request(method: .videos(movieID: movieID), completion: completion)
   }
 }
 
