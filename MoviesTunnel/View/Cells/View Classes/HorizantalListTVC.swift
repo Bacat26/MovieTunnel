@@ -9,6 +9,7 @@ import UIKit
 
 class HorizantalListTVC: UITableViewCell {
   
+  @IBOutlet weak var showAllButton: UIButton!
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var collectionView: UICollectionView!
   var viewModel: HorizantalListCellViewModelable?
@@ -26,15 +27,20 @@ class HorizantalListTVC: UITableViewCell {
   func setLayout() {
     let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
     layout.scrollDirection = .horizontal
-    layout.sectionInset = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
-    layout.itemSize = CGSize(width: 120, height: 180)
+    layout.sectionInset = UIEdgeInsets(top: 4, left: 12, bottom: 4, right: 12)
+    layout.itemSize = viewModel!.itemSize
     layout.minimumInteritemSpacing = 10
     collectionView!.collectionViewLayout = layout
   }
   
-  func configureCell(viewModel: HorizantalListCellViewModelable) {
-    self.setLayout()
+  func configureCell(viewModel: BaseTableViewCellViewModelable) {
+    guard let viewModel = viewModel as? HorizantalListCellViewModelable else {
+      fatalError("Can not convert viewModel to HorizantalListCellViewModel")
+    }
     self.viewModel = viewModel
+    let needShowAllButton = viewModel.listType != .recommendations && viewModel.listType != .similar
+    self.showAllButton.isHidden = !needShowAllButton
+    self.setLayout()
     self.titleLabel.text = viewModel.listType.title
     self.collectionView.delegate = self
     self.collectionView.dataSource = self
@@ -62,11 +68,8 @@ extension HorizantalListTVC: UICollectionViewDelegate, UICollectionViewDataSourc
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//    if let selectedMovie = self.viewModel?.movieList[indexPath.item] {
-//      let detailVC = MovieDetailVC()
-//      detailVC.movieID = selectedMovie.id
-//    }
-//    (self.tabBarController as? MainTabBarController)?.present(with: detailVC)
-//    self.navigationController?.pushViewController(detailVC, animated: true)
+    if let movieModel = self.viewModel?.getCellViewModel(indexPath: indexPath), let movie = movieModel.movie {
+      delegate?.showMovieDetail(movie: movie)
+    }
   }
 }

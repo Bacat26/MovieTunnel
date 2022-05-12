@@ -61,6 +61,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="collectionView" destination="rH6-cL-Myh" id="RNA-ib-DC3"/>
+                <outlet property="showAllButton" destination="7MY-cA-wv5" id="DiF-Pt-zYr"/>
                 <outlet property="titleLabel" destination="jOH-vt-rd6" id="z9l-3H-Sta"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="129.91071428571428"/>

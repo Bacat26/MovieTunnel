@@ -13,6 +13,8 @@ enum APIMethods: URLRequestConvertible {
   case upcoming(pageIndex: Int)
   case topRated(pageIndex: Int)
   case movieDetail(movieID: Int)
+  case similarMovies(movieID: Int)
+  case recommendationsMovies(movieID: Int)
   
   var path: String {
     switch self {
@@ -26,6 +28,10 @@ enum APIMethods: URLRequestConvertible {
       return "top_rated"
     case let .movieDetail(movieID):
       return "\(movieID)"
+    case let .similarMovies(movieID):
+      return "\(movieID)/similar"
+    case let .recommendationsMovies(movieID):
+      return "\(movieID)/recommendations"
     }
   }
   
@@ -38,6 +44,9 @@ enum APIMethods: URLRequestConvertible {
     case .popular(let pageIndex), .latest(let pageIndex), .upcoming(let pageIndex), .topRated(let pageIndex):
       params[ParameterKey.pageIndex.rawValue] = "\(pageIndex)"
       return params
+    case .recommendationsMovies, .similarMovies:
+      params[ParameterKey.pageIndex.rawValue] = "1"
+      return params
     default:
       return params
     }
@@ -45,14 +54,14 @@ enum APIMethods: URLRequestConvertible {
   
   var methodType: HTTPMethod {
     switch self {
-    case .popular, .latest, .upcoming, .topRated, .movieDetail:
+    case .popular, .latest, .upcoming, .topRated, .movieDetail, .similarMovies, .recommendationsMovies:
       return .get
     }
   }
   
   var encoding: ParameterEncoding {
     switch self {
-    case .popular, .latest, .upcoming, .topRated, .movieDetail:
+    case .popular, .latest, .upcoming, .topRated, .movieDetail, .similarMovies, .recommendationsMovies:
       return URLEncoding.queryString
     }
   }

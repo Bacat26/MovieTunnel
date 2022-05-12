@@ -7,10 +7,12 @@
 
 import Foundation
 
-enum HighligtsMoviesType: Int {
+enum HorizantalListType: Int {
   case popular = 0
   case topRated = 1
   case upcoming = 2
+  case similar = 3
+  case recommendations = 4
   
   var title: String {
     switch self {
@@ -20,6 +22,10 @@ enum HighligtsMoviesType: Int {
       return "Top Rated"
     case .upcoming:
       return "Upcoming"
+    case .similar:
+      return "Similar Movies"
+    case .recommendations:
+      return "Recommendations"
     }
   }
 }

@@ -40,12 +40,12 @@ class HighlightsViewController: UIViewController {
     tableView.dataSource = self
   }
   
-  func showAll() -> (([SingleMovieCellViewModelable]?, HighligtsMoviesType) -> ()) {
+  func showAll() -> (([SingleMovieCellViewModelable]?, HorizantalListType) -> ()) {
     return { [weak self] viewModelList, type in
       guard let viewModelList = viewModelList, let self = self else { return }
       let listViewModel = MovieListViewModel(initial: viewModelList, listType: type)
       let movieListViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MovieListViewController") as! MovieListViewController
-      movieListViewController.viewModel = listViewModel as? MovieListViewModelable
+      movieListViewController.viewModel = listViewModel
       self.present(movieListViewController, animated: true, completion: nil)
     }
   }
@@ -67,16 +67,17 @@ extension HighlightsViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension HighlightsViewController: HorizantalListCellDelegate {
-  func showAllList(movieViewModelList: [SingleMovieCellViewModelable], listType: HighligtsMoviesType) {
+  func showAllList(movieViewModelList: [SingleMovieCellViewModelable], listType: HorizantalListType) {
     let listViewModel = MovieListViewModel(initial: movieViewModelList, listType: listType)
     let movieListViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MovieListViewController") as! MovieListViewController
-    movieListViewController.viewModel = listViewModel as? MovieListViewModelable
+    movieListViewController.viewModel = listViewModel
     self.present(movieListViewController, animated: true, completion: nil)
   }
   
   func showMovieDetail(movie: Movie) {
-    
+    let detailVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MovieDetailViewController") as! MovieDetailViewController
+    let detailviewModel = MovieDetailViewModel(movie: movie)
+    detailVC.viewModel = detailviewModel
+    self.present(detailVC, animated: true, completion: nil)
   }
-  
-  
 }

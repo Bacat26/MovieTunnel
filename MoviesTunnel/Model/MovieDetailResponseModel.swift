@@ -8,28 +8,28 @@
 import Foundation
 
 struct MovieDetailResponse: Codable {
-  let adult: Bool
+  let adult: Bool?
   let backdropPath: String?
-  let budget: Int
-  let genres: [Genre]
+  let budget: Int?
+  let genres: [Genre]?
   let homepage: String?
   let id: Int
   let imdbID: String?
   let originalLanguage, originalTitle: String
   let overview: String?
-  let popularity: Double
+  let popularity: Double?
   let posterPath: String?
-  let productionCompanies: [ProductionCompany]
-  let productionCountries: [ProductionCountry]
+  let productionCompanies: [ProductionCompany]?
+  let productionCountries: [ProductionCountry]?
   let releaseDate: String
-  let revenue: Int
+  let revenue: Int?
   let runtime: Int?
-  let spokenLanguages: [SpokenLanguage]
+  let spokenLanguages: [SpokenLanguage]?
   let status, title: String
   let tagline: String?
-  let video: Bool
-  let voteAverage: Double
-  let voteCount: Int
+  let video: Bool?
+  let voteAverage: Double?
+  let voteCount: Int?
   lazy var backdropURL: String? = {
       return ("https://image.tmdb.org/t/p/w500" + (backdropPath ?? ""))
   }()

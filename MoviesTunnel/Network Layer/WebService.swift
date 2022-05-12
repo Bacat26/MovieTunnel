@@ -13,6 +13,8 @@ protocol WebServiceProtocol {
   func getUpcomingMovies(pageIndex: Int, completion: @escaping (Result<MovieResponseModel, AFError>) -> Void)
   func getTopRatedMovies(pageIndex: Int, completion: @escaping (Result<MovieResponseModel, AFError>) -> Void)
   func getMovieDetail(with movieID: Int, completion: @escaping (Result<MovieDetailResponse, AFError>) -> Void)
+  func getSimilarMovies(with movieID: Int, completion: @escaping (Result<MovieResponseModel, AFError>) -> Void)
+  func getRecommendationsMovies(with movieID: Int, completion: @escaping (Result<MovieResponseModel, AFError>) -> Void)
 }
 
 class WebService: WebServiceProtocol {
@@ -34,7 +36,12 @@ class WebService: WebServiceProtocol {
   func getMoviesList(for type: APIMethods, pageIndex: Int, completion: @escaping (Result<MovieResponseModel, AFError>) -> Void) {
     request(method: .topRated(pageIndex: pageIndex), completion: completion)
   }
-  
+  func getSimilarMovies(with movieID: Int, completion: @escaping (Result<MovieResponseModel, AFError>) -> Void) {
+    request(method: .similarMovies(movieID: movieID), completion: completion)
+  }
+  func getRecommendationsMovies(with movieID: Int, completion: @escaping (Result<MovieResponseModel, AFError>) -> Void) {
+    request(method: .recommendationsMovies(movieID: movieID), completion: completion)
+  }
 }
 
 //MARK: General Usage

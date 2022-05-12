@@ -16,14 +16,14 @@ class MovieListViewModel: MovieListViewModelable {
   
   var reloadAll: (() -> ())?
   var scrollToTop: (() -> ())?
-  var updateSectionLayout: ((HighligtsMoviesType) -> ())?
+  var updateSectionLayout: ((HorizantalListType) -> ())?
   var stillLoading: Bool = false
-  var listType: HighligtsMoviesType
+  var listType: HorizantalListType
   
   let cellInteritemSpacing: CGFloat! = 10
   private let coloumnCount: Int = 3
   
-  init(initial movieList: [SingleMovieCellViewModelable], listType: HighligtsMoviesType) {
+  init(initial movieList: [SingleMovieCellViewModelable], listType: HorizantalListType) {
     movieViewModelList = movieList
     pageInfo.increasePageNumber()
     stillLoading = false
@@ -50,6 +50,8 @@ class MovieListViewModel: MovieListViewModelable {
       client.getPopularMovies(pageIndex: self.pageInfo.nextPage, completion: apiMethodsCompletion())
     case .upcoming:
       client.getUpcomingMovies(pageIndex: self.pageInfo.nextPage, completion: apiMethodsCompletion())
+    default:
+      break
     }
   }
   
@@ -88,7 +90,7 @@ class MovieListViewModel: MovieListViewModelable {
     return CGSize(width: cellWidth, height: cellHeight)
   }
   
-  func changeListType(movieType: HighligtsMoviesType) {
+  func changeListType(movieType: HorizantalListType) {
     guard movieType != listType else { return }
     pageInfo = PageInfo()
     self.listType = movieType

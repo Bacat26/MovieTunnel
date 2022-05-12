@@ -76,7 +76,15 @@ extension MovieListViewController: UICollectionViewDelegate, UICollectionViewDat
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let cellViewModel = viewModel.getCellViewModel(indexPath: indexPath)
-    
+    routeMovieDetail(cellViewModel: cellViewModel)
+  }
+  
+  func routeMovieDetail(cellViewModel: SingleMovieCellViewModelable) {
+    guard let movie = cellViewModel.movie else { return }
+    let detailVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MovieDetailViewController") as! MovieDetailViewController
+    let detailviewModel = MovieDetailViewModel(movie: movie)
+    detailVC.viewModel = detailviewModel
+    self.present(detailVC, animated: true, completion: nil)
   }
   
   func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -100,14 +108,14 @@ extension MovieListViewController: UICollectionViewDelegate, UICollectionViewDat
     }
   }
   
-  func updateSectionButtonHandler() -> ((HighligtsMoviesType) -> ())? {
+  func updateSectionButtonHandler() -> ((HorizantalListType) -> ())? {
     return { [weak self] listType in
       guard let self = self else { return }
       self.setupSectionButtonLayout(listType: listType)
     }
   }
   
-  func setupSectionButtonLayout(listType: HighligtsMoviesType) {
+  func setupSectionButtonLayout(listType: HorizantalListType) {
     switch listType {
     case .popular:
       self.popularSectionButton.setTitleColor(UIColor.white, for: .normal)
@@ -130,6 +138,8 @@ extension MovieListViewController: UICollectionViewDelegate, UICollectionViewDat
       self.topRatedSectionButton.backgroundColor = .clear
       self.upcomingSectionButton.setTitleColor(UIColor.white, for: .normal)
       self.upcomingSectionButton.backgroundColor = .systemRed
+    default:
+      break
     }
   }
 }

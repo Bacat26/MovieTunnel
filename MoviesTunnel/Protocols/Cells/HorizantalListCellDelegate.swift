@@ -8,6 +8,6 @@
 import Foundation
 
 protocol HorizantalListCellDelegate: NSObject {
-  func showAllList(movieViewModelList: [SingleMovieCellViewModelable], listType: HighligtsMoviesType)
+  func showAllList(movieViewModelList: [SingleMovieCellViewModelable], listType: HorizantalListType)
   func showMovieDetail(movie: Movie)
 }

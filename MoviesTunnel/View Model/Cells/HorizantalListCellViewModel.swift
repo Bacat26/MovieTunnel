@@ -8,14 +8,18 @@
 import UIKit
 
 class HorizantalListCellViewModel: HorizantalListCellViewModelable {
+  var type: TableCellType
   var movieViewModelList: [SingleMovieCellViewModelable]
-  var listType: HighligtsMoviesType
-  var cellSize: CGSize
+  var listType: HorizantalListType
+  var cellHeight: CGFloat
+  var itemSize: CGSize
   
-  init(movieList: [Movie], listType: HighligtsMoviesType) {
-    self.movieViewModelList = movieList.compactMap({ SingleMovieCellViewModel(movie: $0) as? SingleMovieCellViewModelable })
+  init(movieList: [Movie], listType: HorizantalListType) {
+    self.movieViewModelList = movieList.compactMap({ SingleMovieCellViewModel(movie: $0) })
     self.listType = listType
-    self.cellSize = CGSize(width: 120, height: 180)
+    self.itemSize = CGSize(width: 120, height: 180)
+    self.cellHeight = UITableView.automaticDimension
+    self.type = .horizantal
   }
   
   func numberOfColoumn() -> Int {

@@ -7,6 +7,12 @@
 
 import UIKit
 
+enum TableCellType {
+  case horizantal
+  case movieOverview
+}
+
 protocol BaseTableViewCellViewModelable {
-  var cellSize: CGSize { get }
+  var cellHeight: CGFloat { get }
+  var type: TableCellType { get }
 }
