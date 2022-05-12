@@ -50,6 +50,8 @@
 		0FAF1E33282C9B22002F3932 /* FavoriteStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAF1E32282C9B22002F3932 /* FavoriteStorageManager.swift */; };
 		0FAF1E36282CA0E8002F3932 /* UIImageView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAF1E35282CA0E8002F3932 /* UIImageView + Extension.swift */; };
 		0FAF1E38282CABE5002F3932 /* MovieVideosResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAF1E37282CABE5002F3932 /* MovieVideosResponse.swift */; };
+		0FAF1E3A282D2C01002F3932 /* MoviesApıClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAF1E39282D2C01002F3932 /* MoviesApıClientTests.swift */; };
+		0FAF1E3C282D346A002F3932 /* MovieListPageInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAF1E3B282D346A002F3932 /* MovieListPageInfoTests.swift */; };
 		3B2205DE2E0A14D067FAD991 /* Pods_MoviesTunnelTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB524A6252677D9556376AB8 /* Pods_MoviesTunnelTests.framework */; };
 		495968231AD72F8311316755 /* Pods_MoviesTunnel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC7AEE7E607DADD677768FAF /* Pods_MoviesTunnel.framework */; };
 		6016678B55773F5A5C586A43 /* Pods_MoviesTunnel_MoviesTunnelUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4CAF2B7AD445A1B4EC3543B /* Pods_MoviesTunnel_MoviesTunnelUITests.framework */; };
@@ -121,6 +123,8 @@
 		0FAF1E32282C9B22002F3932 /* FavoriteStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteStorageManager.swift; sourceTree = "<group>"; };
 		0FAF1E35282CA0E8002F3932 /* UIImageView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + Extension.swift"; sourceTree = "<group>"; };
 		0FAF1E37282CABE5002F3932 /* MovieVideosResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieVideosResponse.swift; sourceTree = "<group>"; };
+		0FAF1E39282D2C01002F3932 /* MoviesApıClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoviesApıClientTests.swift"; sourceTree = "<group>"; };
+		0FAF1E3B282D346A002F3932 /* MovieListPageInfoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListPageInfoTests.swift; sourceTree = "<group>"; };
 		2CDF7783D5BF29C57FD8E17C /* Pods-MoviesTunnel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviesTunnel.release.xcconfig"; path = "Target Support Files/Pods-MoviesTunnel/Pods-MoviesTunnel.release.xcconfig"; sourceTree = "<group>"; };
 		73B538325319802A64F9E8AE /* Pods-MoviesTunnel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviesTunnel.debug.xcconfig"; path = "Target Support Files/Pods-MoviesTunnel/Pods-MoviesTunnel.debug.xcconfig"; sourceTree = "<group>"; };
 		7E7755C6A97326B21486F4A6 /* Pods-MoviesTunnelTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviesTunnelTests.debug.xcconfig"; path = "Target Support Files/Pods-MoviesTunnelTests/Pods-MoviesTunnelTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -291,6 +295,8 @@
 			isa = PBXGroup;
 			children = (
 				0F5CBD252829CC4700EBCD4D /* MoviesTunnelTests.swift */,
+				0FAF1E39282D2C01002F3932 /* MoviesApıClientTests.swift */,
+				0FAF1E3B282D346A002F3932 /* MovieListPageInfoTests.swift */,
 			);
 			path = MoviesTunnelTests;
 			sourceTree = "<group>";
@@ -688,7 +694,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FAF1E3A282D2C01002F3932 /* MoviesApıClientTests.swift in Sources */,
 				0F5CBD262829CC4700EBCD4D /* MoviesTunnelTests.swift in Sources */,
+				0FAF1E3C282D346A002F3932 /* MovieListPageInfoTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -868,6 +876,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -897,6 +906,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

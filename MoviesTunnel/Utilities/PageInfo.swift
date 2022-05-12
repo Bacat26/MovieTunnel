@@ -16,9 +16,8 @@ struct PageInfo {
   init(with listResponseModel: MovieResponseModel) {
     self.totalPage = listResponseModel.totalPages
     self.currentPage = listResponseModel.page
-    self.nextPage = currentPage + 1
     self.hasNextPage = currentPage < totalPage
-    
+    self.nextPage = hasNextPage ? currentPage + 1 : -1 
   }
   
   init() {
@@ -29,8 +28,9 @@ struct PageInfo {
   }
   
   mutating func increasePageNumber() {
+    guard self.currentPage < totalPage else { return }
     currentPage += 1
-    nextPage = currentPage + 1
     hasNextPage = currentPage < totalPage
+    self.nextPage = hasNextPage ? currentPage + 1 : -1 
   }
 }
