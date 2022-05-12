@@ -1,13 +1,14 @@
 # MovieTunnel
 
 MovieTunnel is an iOS application that lists movies. You can add movies to favorite list. You can also examine in environments where the internet is not available.
-
+<br /> <br />
 
 ## Screenshoots
+![as2](https://user-images.githubusercontent.com/21208125/168105460-044008d9-9e85-46c9-807a-a8b5715efee7.png)
+![as3](https://user-images.githubusercontent.com/21208125/168105518-7bfeec1a-ac3f-49b7-8714-85c3db8f1293.png)
+![as1](https://user-images.githubusercontent.com/21208125/168105411-f97d7299-a8fb-46ef-b042-02da6fe66f29.png)
 
-![ScreenshootMovieTunnel-1](https://user-images.githubusercontent.com/21208125/168098301-21f8e649-bd78-4bfc-bb84-3e42617449b5.png)
-![sscreenshootMovieTunnel-2](https://user-images.githubusercontent.com/21208125/168098311-2e9f69e5-3ec6-489b-94fb-0096e5886aa9.png)
-![sscreenshootMovieTunnel-4](https://user-images.githubusercontent.com/21208125/168098281-78740fae-d241-459a-a9cb-53ea01600ec9.png)
+<br /> <br />
 
 ## 👨🏻‍💻 Architecture
 
