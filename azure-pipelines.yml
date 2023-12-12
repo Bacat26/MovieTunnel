@@ -8,13 +8,20 @@ trigger:
 
 pool:
   vmImage: 'macos-latest'
+  
+jobs:
+- job: Build
+  displayName: 'Build and Test'
+  steps:
+  - task: UseXcode@7
+    inputs:
+      version: '12'
+      useXcodeSelect: true
 
-steps:
-- task: Xcode@5
-  inputs:
-    actions: 'build'
-    scheme: ''
-    sdk: 'iphoneos'
-    configuration: 'Release'
-    xcWorkspacePath: '**/*.xcodeproj/project.xcworkspace'
-    xcodeVersion: 'default' # Options: 8, 9, 10, 11, 12, default, specifyPath
+  - script: |
+      xcodebuild clean build -workspace YourProject.xcworkspace -scheme YourScheme -destination 'platform=iOS Simulator,name=iPhone 12'
+  displayName: 'Build'
+
+  - script: |
+      xcodebuild test -workspace YourProject.xcworkspace -scheme YourScheme -destination 'platform=iOS Simulator,name=iPhone 12'
+  displayName: 'Run Tests'
