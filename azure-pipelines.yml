@@ -19,9 +19,9 @@ jobs:
       useXcodeSelect: true
 
   - script: |
-      xcodebuild clean build -workspace YourProject.xcworkspace -scheme YourScheme -destination 'platform=iOS Simulator,name=iPhone 12'
+      xcodebuild clean build -workspace MoviesTunnel.xcworkspace -scheme MoviesTunnel -destination 'platform=iOS Simulator,name=iPhone 12'
   displayName: 'Build'
 
   - script: |
-      xcodebuild test -workspace YourProject.xcworkspace -scheme YourScheme -destination 'platform=iOS Simulator,name=iPhone 12'
+      xcodebuild test -workspace MoviesTunnel.xcworkspace -scheme MoviesTunnel -destination 'platform=iOS Simulator,name=iPhone 12'
   displayName: 'Run Tests'
