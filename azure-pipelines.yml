@@ -20,8 +20,6 @@ jobs:
 
   - script: |
       xcodebuild clean build -workspace MoviesTunnel.xcworkspace -scheme MoviesTunnel -destination 'platform=iOS Simulator,name=iPhone 12'
-  displayName: 'Build'
 
   - script: |
       xcodebuild test -workspace MoviesTunnel.xcworkspace -scheme MoviesTunnel -destination 'platform=iOS Simulator,name=iPhone 12'
-  displayName: 'Run Tests'
